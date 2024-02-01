@@ -1,5 +1,59 @@
-name: Deploy to GitHub Pages
+name: Build and deploy to GitHub pages
 on:
     push:
         branches:
             - i18n
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        permissions:
+            contents: read
+            packages: write
+            deployments: write
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: lowercase github.repository
+              run: |
+                  echo "GITHUB_REPO=`echo ${{github.repository}} | tr '[:upper:]' '[:lower:]'`" >>${GITHUB_ENV}
+
+            - uses: actions/setup-node@v3
+              with:
+                  node-version: "16.x"
+                  registry-url: "https://gitlab.com/api/v4/groups/${{ secrets.GL_GROUP_ID }}/-/packages/npm/"
+                  scope: "@jx3box"
+            - run: |
+                  npm install && npm run build
+                  mv dist index && mkdir -p dist/static/ && mv index dist/static/
+              env:
+                  NODE_AUTH_TOKEN: ""
+
+            # - name: Publish to Cloudflare Pages
+            #   uses: cloudflare/pages-action@v1
+            #   with:
+            #     apiToken: ${{ secrets.CF_API_TOKEN }}
+            #     accountId: ${{ secrets.CF_ACCOUNT_ID }}
+            #     projectName: ${{ secrets.CF_PROJECT_NAME }}
+            #     directory: dist
+            #     gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+            #     branch: master
+            #     wranglerVersion: '3'
+
+            - name: Deploy 🚀
+              uses: JamesIves/github-pages-deploy-action@v4
+              with:
+                  branch: gh-pages
+                  repository-name: vl3box/vl3box
+                  folder: dist
+                  target-folder: ./
+                  token: ${{ secrets.GH_REPO_TOKEN }}
+                  clean: true
+                  clean-exclude: |
+                      **/*.map
+
+            # - name: Upload to Cloudflare R2
+            #   uses: AnimMouse/setup-rclone@v1
+            #   with:
+            #     rclone_config: ${{ secrets.CF_RCLONE_CONFIG }}
+
+            # - run: rclone sync dist/ r2:/vl3box/static/index/
