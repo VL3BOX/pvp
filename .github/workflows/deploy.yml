@@ -26,7 +26,7 @@ jobs:
                   npm install && npm run build
 
                   mv dist ${{ github.event.repository.name }} && mkdir -p dist/static/fonts
-                  mv ${{ github.event.repository.name }}/fonts/* dsit/static/fonts/
+                  mv ${{ github.event.repository.name }}/fonts/* dist/static/fonts/
                   mv ${{ github.event.repository.name }} dist/static/
               env:
                   NODE_AUTH_TOKEN: ""
