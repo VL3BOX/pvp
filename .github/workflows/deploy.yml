@@ -24,7 +24,6 @@ jobs:
                   scope: "@jx3box"
             - run: |
                   npm install && npm run build
-                  mv dist index && mkdir -p dist/static/ && mv index dist/static/
               env:
                   NODE_AUTH_TOKEN: ""
 
