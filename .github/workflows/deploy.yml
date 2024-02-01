@@ -23,6 +23,7 @@ jobs:
                   registry-url: "https://gitlab.com/api/v4/groups/${{ secrets.GL_GROUP_ID }}/-/packages/npm/"
                   scope: "@jx3box"
             - run: |
+                  rm -f package-lock.json yarn.lock
                   npm install && npm run build
               env:
                   NODE_AUTH_TOKEN: ""
