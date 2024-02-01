@@ -24,10 +24,6 @@ jobs:
                   scope: "@jx3box"
             - run: |
                   npm install && npm run build
-
-                  mv dist ${{ github.event.repository.name }} && mkdir -p dist/static/fonts
-                  mv ${{ github.event.repository.name }}/fonts/* dist/static/fonts/
-                  mv ${{ github.event.repository.name }} dist/static/
               env:
                   NODE_AUTH_TOKEN: ""
 
@@ -48,7 +44,7 @@ jobs:
                   branch: gh-pages
                   repository-name: vl3box/vl3box
                   folder: dist
-                  target-folder: ./
+                  target-folder: static/${{ github.event.repository.name }}
                   token: ${{ secrets.GH_REPO_TOKEN }}
                   clean: true
                   clean-exclude: |
