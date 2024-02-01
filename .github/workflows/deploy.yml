@@ -45,7 +45,7 @@ jobs:
                   branch: gh-pages
                   repository-name: vl3box/vl3box
                   folder: dist
-                  target-folder: ./
+                  target-folder: /static/${GITHUB_REPOSITORY#*\/}
                   token: ${{ secrets.GH_REPO_TOKEN }}
                   clean: true
                   clean-exclude: |
