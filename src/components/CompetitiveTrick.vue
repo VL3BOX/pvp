@@ -11,7 +11,14 @@
         <div v-if="data.length" class="m-competitive-trick" v-loading="loading">
             <CompetitiveTrickItemVue v-for="item in data" :key="item.id" :data="item" :preset="presetConfig" />
         </div>
-        <el-alert v-else class="m-strategy-null" title="没有找到相关条目" type="info" center show-icon></el-alert>
+        <el-alert
+            v-else
+            class="m-strategy-null"
+            :title="$t('没有找到相关条目')"
+            type="info"
+            center
+            show-icon
+        ></el-alert>
     </div>
 </template>
 

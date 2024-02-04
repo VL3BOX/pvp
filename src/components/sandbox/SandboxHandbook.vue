@@ -27,7 +27,7 @@
                             :style="showHighlight(item.color)"
                             :href="postLink(item.ID)"
                             :target="target"
-                            >{{ item.post_title || "无标题" }}</a
+                            >{{ item.post_title || $t("无标题") }}</a
                         >
 
                         <!-- 角标 -->
@@ -39,7 +39,7 @@
                     <!-- 字段 -->
                     <div class="u-content u-desc">
                         <div class="u-metalist u-collection">
-                            <strong>小册</strong>
+                            <strong>{{ $t("小册") }}</strong>
                             <em>
                                 <template v-if="~~item.post_collection">
                                     <a :href="`/collection/${item.post_collection}`" target="_blank"
@@ -50,7 +50,7 @@
                             </em>
                         </div>
                         <div class="u-metalist u-topics">
-                            <strong>主题</strong>
+                            <strong>{{ $t("主题") }}</strong>
                             <em>
                                 <template v-if="item.topics && item.topics.length">
                                     <a

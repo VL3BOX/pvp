@@ -9,17 +9,17 @@
                 </div>
 
                 <el-tabs class="m-tabs" v-model="view">
-                    <el-tab-pane label="沙盘攻略" name="index">
+                    <el-tab-pane :label="$t('沙盘攻略')" name="index">
                         <template #label>
                             <el-icon><Collection /></el-icon>
-                            <b>沙盘攻略</b>
+                            <b>{{ $t("沙盘攻略") }}</b>
                         </template>
                         <SandboxHandbook />
                     </el-tab-pane>
                     <el-tab-pane label="沙盘记录" name="logs">
                         <template #label>
                             <el-icon><DataAnalysis /></el-icon>
-                            <b>沙盘记录</b>
+                            <b>{{ $t("沙盘记录") }}</b>
                         </template>
                         <SandboxLogs :sandboxData="sandboxLogsData" />
                     </el-tab-pane>

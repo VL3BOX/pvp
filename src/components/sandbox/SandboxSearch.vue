@@ -4,7 +4,7 @@
             <b :class="key == camp ? 'active' : ''"></b>
             <span>{{ item }}</span>
         </span>
-        <el-switch class="u-route" v-model="route" inactive-text="进攻路线"> </el-switch>
+        <el-switch class="u-route" v-model="route" :inactive-text="$t('进攻路线')"> </el-switch>
         <el-select class="u-server" v-model="server">
             <el-option v-for="item in servers" :key="item" :label="item" :value="item"> </el-option>
         </el-select>

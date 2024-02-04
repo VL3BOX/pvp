@@ -7,15 +7,18 @@
         <div class="u-details">
             <div class="u-block" v-if="item.distance || item.consumption">
                 <span class="u-distance" v-if="item.distance"
-                    ><em>距离</em><span>{{ item.distance }}</span></span
+                    ><em>{{ $t("距离") }}</em
+                    ><span>{{ item.distance }}</span></span
                 >
                 <span class="u-consumption" v-if="item.consumption"
-                    ><em>消耗内力</em><span>{{ item.consumption }}</span></span
+                    ><em>{{ $t("消耗内力") }}</em
+                    ><span>{{ item.consumption }}</span></span
                 >
             </div>
             <div class="u-block" v-if="item.weapon || item.releaseType">
                 <span class="u-weapon" v-if="item.weapon"
-                    ><em>武器</em><span>{{ item.weapon }}</span></span
+                    ><em>{{ $t("武器") }}</em
+                    ><span>{{ item.weapon }}</span></span
                 >
                 <span class="u-release" v-if="item.releaseType"
                     ><span>{{ item.releaseType }}</span></span

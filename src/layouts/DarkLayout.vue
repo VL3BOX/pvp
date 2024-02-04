@@ -2,7 +2,7 @@
     <div class="p-dark-layout" :class="'p-' + pageName">
         <Header></Header>
         <Breadcrumb
-            name="竞技专栏"
+            :name="$t('竞技专栏')"
             slug="pvp"
             root="/pvp"
             :publishEnable="false"
@@ -12,7 +12,7 @@
             class="m-dark-breadcrumb"
         >
             <span class="u-breadcrumb-title"
-                ><el-icon><ArrowRight /></el-icon> 绝境战场</span
+                ><el-icon><ArrowRight /></el-icon> {{ $t("绝境战场") }}</span
             >
             <!-- <template v-if="isEditor" v-slot:op-append>
                 <el-button class="u-admin-btn" type="primary" icon="Setting" @click="toggleReview">管理</el-button>

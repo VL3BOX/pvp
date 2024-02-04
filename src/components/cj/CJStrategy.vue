@@ -8,7 +8,7 @@
             v-else
             effect="dark"
             class="m-strategy-null"
-            title="没有找到相关条目"
+            :title="$t('没有找到相关条目')"
             type="info"
             center
             show-icon

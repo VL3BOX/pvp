@@ -17,7 +17,7 @@
         <!-- origin没有，std有 -->
         <div class="m-xf-buff">
             <h4 class="u-xf-title">
-                <el-icon><ZoomIn /></el-icon>心法加成
+                <el-icon><ZoomIn /></el-icon>{{ $t("心法加成") }}
             </h4>
             <div v-if="client === 'std'" class="u-buff-wrap">
                 <div class="u-buff" v-if="data.BuffID">
@@ -32,9 +32,9 @@
                         <div class="u-desc">{{ data.Desc }}</div>
                     </div>
                 </div>
-                <div v-else class="u-no-data">当前心法没有加成。</div>
+                <div v-else class="u-no-data">{{ $t("当前心法没有加成。") }}</div>
             </div>
-            <div v-else class="u-no-data">缘起暂无心法加成。</div>
+            <div v-else class="u-no-data">{{ $t("缘起暂无心法加成。") }}</div>
         </div>
     </div>
 </template>

@@ -88,7 +88,7 @@
                         <span class="u-camp">{{ active.name }}</span>
                     </div>
                     <div class="u-line">
-                        <span>占领势力：</span>
+                        <span>{{ $t("占领势力：") }}</span>
                         <span :class="active.camp">【{{ active.camp == "haoqi" ? "浩气盟" : "恶人谷" }}】</span>
                     </div>
                     <!-- <div class="u-line u-gang">

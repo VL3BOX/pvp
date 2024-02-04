@@ -26,7 +26,7 @@
                             size="large"
                             :icon="item.showSub ? 'ArrowDownBold' : 'ArrowRightBold'"
                             type="primary"
-                            >技改详解
+                            >{{ $t("技改详解") }}
                         </el-button>
                     </div>
                 </div>
@@ -45,7 +45,13 @@
                             </span>
                         </li>
                     </template>
-                    <el-alert v-else show-icon type="warning" title="该资料片暂无技改详解" :closable="false"></el-alert>
+                    <el-alert
+                        v-else
+                        show-icon
+                        type="warning"
+                        :title="$t('该资料片暂无技改详解')"
+                        :closable="false"
+                    ></el-alert>
                 </ul>
             </template>
             <el-pagination

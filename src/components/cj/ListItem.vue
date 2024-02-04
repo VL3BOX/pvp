@@ -16,8 +16,8 @@
                 <!-- <span class="u-author-name">{{ showNickname(item.author_info) }}</span> -->
             </a>
             <a class="u-title" :style="showHighlight(item.color)" :href="postLink(item.ID)" :target="target">
-                <i class="u-zlp">{{ item.zlp || "未知版本" }}</i>
-                {{ item.post_title || "无标题" }}</a
+                <i class="u-zlp">{{ item.zlp || $t("未知版本") }}</i>
+                {{ item.post_title || $t("无标题") }}</a
             >
         </h2>
 

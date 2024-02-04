@@ -5,18 +5,18 @@
                 <div class="head-title">
                     <span class="u-txt"
                         ><el-icon><Reading /></el-icon>
-                        技能百科
-                        <em class="u-skill-ID" v-if="wikiData && wikiData.post">(技能ID: {{ activeSkill }})</em>
+                        {{ $t("技能百科") }}
+                        <em class="u-skill-ID" v-if="wikiData && wikiData.post">({{ $t("技能ID:") + activeSkill }})</em>
                     </span>
                     <a class="u-button el-button el-button--primary" :href="publish_url(`skill/${activeSkill}`)">
                         <el-icon><Edit /></el-icon>
-                        <span>完善技能百科</span>
+                        <span>{{ $t("完善技能百科") }}</span>
                     </a>
                 </div>
                 <div v-if="wikiData && wikiData.post" class="m-panel-body">
                     <div class="m-wiki-meta">
                         <div class="u-meta">
-                            <em class="u-label">参与贡献</em>
+                            <em class="u-label">{{ $t("参与贡献") }}</em>
                             <a
                                 target="_blank"
                                 :href="`/author/${item.id}`"
@@ -27,7 +27,7 @@
                             /></a>
                         </div>
                         <div class="u-meta">
-                            <em class="u-label">更新时间</em>
+                            <em class="u-label">{{ $t("更新时间") }}</em>
                             <span class="u-value">{{ wikiData.post ? ToDate(wikiData.post.updated) : "" }}</span>
                         </div>
                     </div>
@@ -36,11 +36,11 @@
                 <div class="m-wiki-post-empty m-panel-body" v-if="is_empty">
                     <div class="no_skill_post" v-if="pasv_skills_data.indexOf(activeSkill) == -1">
                         <el-icon><Warning /></el-icon>
-                        <span>暂无百科内容</span>
+                        <span>{{ $t("暂无百科内容") }}</span>
                     </div>
 
                     <div class="no_active_skill" v-else>
-                        <span>请先选择技能后查看技能百科</span>
+                        <span>{{ $t("请先选择技能后查看技能百科") }}</span>
                     </div>
                 </div>
                 <div class="m-wiki-signature" v-if="wikiData && wikiData.post">
@@ -53,7 +53,7 @@
                         :postId="wikiData?.post?.id"
                     ></SimpleThx>
                     <el-button type="primary" class="u-btn" @click="onViewHistory"
-                        ><el-icon class="u-icon"><RefreshLeft /></el-icon>查看历史版本</el-button
+                        ><el-icon class="u-icon"><RefreshLeft /></el-icon>{{ $t("查看历史版本") }}</el-button
                     >
                 </div>
             </div>
@@ -62,32 +62,32 @@
         <!-- <div class="m-wiki-post-empty" v-if="is_empty">
             <div class="no_skill_post" v-if="pasv_skills_data.indexOf(activeSkill) == -1">
                 <el-icon><Warning /></el-icon>
-                <span>当前技能暂无百科，我要</span
+                <span>{{ $t('当前技能暂无百科，我要') }}</span
                 ><a
                     class="s-link el-button el-button--small is-round el-button--primary"
                     :href="publish_url(`skill/${activeSkill}`)"
-                    >完善百科</a
+                    >{{ $t('完善百科') }}</a
                 >
             </div>
 
             <div class="no_active_skill" v-else>
-                <span>请先选择技能后查看技能百科</span>
+                <span>{{ $t('请先选择技能后查看技能百科') }}</span>
             </div>
         </div> -->
 
-        <el-drawer v-model="showDrawer" title="历史版本" class="c-wiki-revisions">
+        <el-drawer v-model="showDrawer" :title="$t('历史版本')" class="c-wiki-revisions">
             <div class="m-revisions-panel">
                 <div class="u-empty" v-if="!versions || !versions.length">
-                    <span v-if="versions === null">🎉 数据加载中...</span>
-                    <span v-if="versions === false">⚠️ 数据加载异常</span>
-                    <span v-if="versions && !versions.length">💧 暂无数据</span>
+                    <span v-if="versions === null">🎉 {{ $t("数据加载中...") }}</span>
+                    <span v-if="versions === false">⚠️ {{ $t("数据加载异常") }}</span>
+                    <span v-if="versions && !versions.length">💧 {{ $t("暂无数据") }}</span>
                 </div>
                 <table v-if="versions && versions.length" class="m-histories">
                     <tr>
-                        <th>版本</th>
-                        <th>更新时间</th>
-                        <th>贡献者</th>
-                        <th>修订说明</th>
+                        <th>{{ $t("版本") }}</th>
+                        <th>{{ $t("更新时间") }}</th>
+                        <th>{{ $t("贡献者") }}</th>
+                        <th>{{ $t("修订说明") }}</th>
                     </tr>
                     <tr class="history" v-for="(ver, key) in versions" :key="key">
                         <td>

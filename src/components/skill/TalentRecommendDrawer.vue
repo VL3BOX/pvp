@@ -7,15 +7,15 @@
         append-to-body
     >
         <el-form :model="form" label-width="80px" label-position="left">
-            <el-form-item label="心法">
+            <el-form-item :label="$t('心法')">
                 <el-input :model-value="subtype" disabled></el-input>
             </el-form-item>
-            <el-form-item label="用途" prop="key">
+            <el-form-item :label="$t('用途')" prop="key">
                 <el-select
                     v-model="active"
                     filterable
                     allow-create
-                    placeholder="请选择用途或输入新用途"
+                    :placeholder="$t('请选择用途或输入新用途')"
                     style="width: 100%"
                     @change="onKeyChange"
                     default-first-option
@@ -28,8 +28,8 @@
                     ></el-option>
                 </el-select>
             </el-form-item>
-            <el-form-item label="客户端" prop="client">
-                <el-select v-model="form.client" placeholder="选择客户端" style="width: 100%">
+            <el-form-item :label="$t('客户端')" prop="client">
+                <el-select v-model="form.client" :placeholder="$t('选择客户端')" style="width: 100%">
                     <el-option
                         v-for="item in clients"
                         :key="item.value"
@@ -38,8 +38,8 @@
                     ></el-option>
                 </el-select>
             </el-form-item>
-            <el-form-item label="类型" prop="type">
-                <el-select v-model="form.type" placeholder="选择类型" style="width: 100%">
+            <el-form-item :label="$t('类型')" prop="type">
+                <el-select v-model="form.type" :placeholder="$t('选择类型')" style="width: 100%">
                     <el-option
                         v-for="item in types"
                         :key="item.value"
@@ -48,8 +48,8 @@
                     ></el-option>
                 </el-select>
             </el-form-item>
-            <el-form-item label="适用类型" prop="subtype">
-                <el-select v-model="form.subtype" placeholder="选择适用类型" style="width: 100%">
+            <el-form-item :label="$t('适用类型')" prop="subtype">
+                <el-select v-model="form.subtype" :placeholder="$t('选择适用类型')" style="width: 100%">
                     <el-option
                         v-for="item in subtypes"
                         :key="item.value"
@@ -63,24 +63,26 @@
                     <template #prepend>
                         <a class="u-get" target="_blank" :href="typeHref">
                             <el-icon><Warning></Warning></el-icon>
-                            获取编码
+                            {{ $t("获取编码") }}
                         </a>
                     </template>
                 </el-input>
             </el-form-item>
-            <el-form-item label="配装编码" prop="pz_code">
-                <el-input v-model="form.pz_code" placeholder="输入配装编码"></el-input>
+            <el-form-item :label="$t('配装编码')" prop="pz_code">
+                <el-input v-model="form.pz_code" :placeholder="$t('输入配装编码')"></el-input>
             </el-form-item>
-            <el-form-item label="描述" prop="desc">
-                <el-input v-model="form.desc" type="textarea" placeholder="输入描述" :rows="4"></el-input>
+            <el-form-item :label="$t('描述')" prop="desc">
+                <el-input v-model="form.desc" type="textarea" :placeholder="$t('输入描述')" :rows="4"></el-input>
             </el-form-item>
         </el-form>
 
         <template #footer>
             <div>
-                <el-button type="danger" class="u-del-btn" @click="onDelete" :disabled="saveLoading">删除</el-button>
-                <el-button @click="onCancel" :disabled="saveLoading">取消</el-button>
-                <el-button type="primary" @click="onSave" :disabled="saveLoading">保存</el-button>
+                <el-button type="danger" class="u-del-btn" @click="onDelete" :disabled="saveLoading">{{
+                    $t("删除")
+                }}</el-button>
+                <el-button @click="onCancel" :disabled="saveLoading">{{ $t("取消") }}</el-button>
+                <el-button type="primary" @click="onSave" :disabled="saveLoading">{{ $t("保存") }}</el-button>
             </div>
         </template>
     </el-drawer>

@@ -2,7 +2,7 @@
     <div>
         <Header></Header>
         <Breadcrumb
-            name="竞技专栏"
+            :name="$t('竞技专栏')"
             slug="pvp"
             root="/pvp"
             :publishEnable="true"

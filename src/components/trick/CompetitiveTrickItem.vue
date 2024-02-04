@@ -3,7 +3,7 @@
         <div class="m-trick-item__header">
             <div class="m-trick-item__title">
                 <span class="u-label u-zlp" v-if="data.zlp">{{ data.zlp }}</span>
-                <a class="u-link" :href="`/pvp/${data?.ID}`" target="_blank">{{ data.post_title || "未知流派" }}</a>
+                <a class="u-link" :href="`/pvp/${data?.ID}`" target="_blank">{{ data.post_title || $t("未知流派") }}</a>
                 <span class="u-marks" v-if="data.mark && data.mark.length">
                     <i v-for="mark in data.mark" class="u-mark" :key="mark">{{ showMark(mark) }}</i>
                 </span>
@@ -48,18 +48,18 @@
                     <div class="m-talent" v-if="Object.keys(talent).length">
                         <div class="m-talent__title">
                             <img class="u-icon" :src="getAppIcon('talent')" alt="" />
-                            奇穴
+                            {{ $t("奇穴") }}
                         </div>
                         <div class="m-talent-box" :class="`m-qx-container-${data?.ID}`"></div>
 
                         <div class="u-desc" v-if="data?.post_meta?.talent_desc">
-                            奇穴讲解：<span v-html="nl2br(data?.post_meta?.talent_desc)"></span>
+                            {{ $t("奇穴讲解：") }}<span v-html="nl2br(data?.post_meta?.talent_desc)"></span>
                         </div>
                     </div>
                     <div class="m-skills">
                         <div class="m-skill-item" v-for="(item, i) in skills" :key="i">
                             <div class="u-title">
-                                <img class="u-icon" :src="getAppIcon('pvp')" alt="" /> 连招：{{ item.name }}
+                                <img class="u-icon" :src="getAppIcon('pvp')" alt="" /> {{ $t("连招：") + item.name }}
                             </div>
                             <div class="u-skills" v-if="item.sq">
                                 <span
@@ -74,19 +74,19 @@
                                         :title="skill.Name"
                                     />
                                     <span class="u-skill-name" :title="skill.Name">{{ skill.Name }}</span>
-                                    <i class="u-gcd-icon" v-show="skill.WithoutGcd" title="无GCD技能">
+                                    <i class="u-gcd-icon" v-show="skill.WithoutGcd" :title="$t('无GCD技能')">
                                         <el-icon><Clock /></el-icon>
                                     </i>
                                 </span>
                             </div>
-                            <div class="u-desc" v-if="item.desc">连招说明：{{ item.desc }}</div>
+                            <div class="u-desc" v-if="item.desc">{{ $t("连招说明：") + item.desc }}</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <el-drawer title="评论" v-model="showComment" destroy-on-close class="m-trick-drawer">
+        <el-drawer :title="$t('评论')" v-model="showComment" destroy-on-close class="m-trick-drawer">
             <Comment category="post" :id="data?.ID"></Comment>
         </el-drawer>
     </div>

@@ -1,23 +1,25 @@
 <template>
-    <el-drawer title="标点审核" v-model="drawer" append-to-body destroy-on-close modal-class="m-review-drawer">
+    <el-drawer :title="$t('标点审核')" v-model="drawer" append-to-body destroy-on-close modal-class="m-review-drawer">
         <div class="m-review-points">
             <div class="u-point-item" v-for="pointItem in list" :key="pointItem.id">
                 <div class="u-header">
                     <div class="u-title">
                         <img :src="pointItem.pointImg" :alt="pointItem.pointName" />
                         <span>{{ pointItem.pointName }}</span>
-                        <el-tag size="small">待审核</el-tag>
+                        <el-tag size="small">{{ $t("待审核") }}</el-tag>
                     </div>
                     <div class="u-op">
-                        <el-button size="small" icon="MapLocation" @click="toMark(pointItem)">标记</el-button>
-                        <el-popconfirm title="确定通过该短评吗？" hideIcon @confirm="toReview(pointItem.id, 1)">
+                        <el-button size="small" icon="MapLocation" @click="toMark(pointItem)">{{
+                            $t("标记")
+                        }}</el-button>
+                        <el-popconfirm :title="$t('确定通过该短评吗？')" hideIcon @confirm="toReview(pointItem.id, 1)">
                             <template #reference>
-                                <el-button type="success" size="small">通过</el-button>
+                                <el-button type="success" size="small">{{ $t("通过") }}</el-button>
                             </template>
                         </el-popconfirm>
-                        <el-popconfirm title="确定拒绝该短评吗？" hideIcon @confirm="toReview(pointItem.id, 2)">
+                        <el-popconfirm :title="$t('确定拒绝该短评吗？')" hideIcon @confirm="toReview(pointItem.id, 2)">
                             <template #reference>
-                                <el-button type="danger" size="small">拒绝</el-button>
+                                <el-button type="danger" size="small">{{ $t("拒绝") }}</el-button>
                             </template>
                         </el-popconfirm>
                     </div>
@@ -53,7 +55,7 @@
         </el-pagination>
         <template #footer>
             <div class="m-footer">
-                <el-button @click="onClose">取消</el-button>
+                <el-button @click="onClose">{{ $t("取消") }}</el-button>
             </div>
         </template>
     </el-drawer>

@@ -3,22 +3,22 @@
         class="m-skill-dialog"
         :model-value="modelValue"
         @close="close"
-        title="技能库"
+        :title="$t('技能库')"
         append-to-body
         lock-scroll
     >
         <div class="m-database-search">
             <el-radio-group class="u-client" v-model="client" @change="search">
-                <el-radio-button label="std">重制</el-radio-button>
-                <el-radio-button label="origin">缘起</el-radio-button>
+                <el-radio-button label="std">{{ $t("重制") }}</el-radio-button>
+                <el-radio-button label="origin">{{ $t("缘起") }}</el-radio-button>
             </el-radio-group>
-            <el-input class="u-input" placeholder="请输入 ID 或 名称" v-model="query" @keyup.enter="search">
-                <template #prepend>ID ／名称</template>
+            <el-input class="u-input" :placeholder="$t('请输入 ID 或 名称')" v-model="query" @keyup.enter="search">
+                <template #prepend>{{ $t("ID ／名称") }}</template>
             </el-input>
         </div>
 
         <div v-if="total && done" class="m-resource-count">
-            <i class="el-icon-s-data"></i> 共找到 <b>{{ total }}</b> 条记录
+            <i class="el-icon-s-data"></i> {{ $t("共找到") }} <b>{{ total }}</b> {{ $t("条记录") }}
         </div>
         <ul class="m-resource-list">
             <li
@@ -42,7 +42,7 @@
                 </span>
             </li>
         </ul>
-        <el-alert v-if="!skill.length && done" title="没有找到相关条目" type="info" show-icon></el-alert>
+        <el-alert v-if="!skill.length && done" :title="$t('没有找到相关条目')" type="info" show-icon></el-alert>
 
         <template v-if="multipage">
             <!-- 下一页 -->
@@ -52,7 +52,7 @@
                 type="primary"
                 icon="el-icon-arrow-down"
                 @click="appendPage"
-                >加载更多</el-button
+                >{{ $t("加载更多") }}</el-button
             >
             <!-- 分页 -->
             <el-pagination
@@ -67,12 +67,12 @@
             ></el-pagination>
         </template>
 
-        <div class="m-database-tip" v-show="isBlank">❤ 请输入搜索条件查询</div>
+        <div class="m-database-tip" v-show="isBlank">❤ {{ $t("请输入搜索条件查询") }}</div>
 
         <!-- 插入按钮 -->
         <template #footer>
             <span class="dialog-footer">
-                <el-button @click="close">取 消</el-button>
+                <el-button @click="close">{{ $t("取 消") }}</el-button>
                 <el-button type="primary" @click="submit">
                     {{ buttonTXT }}
                 </el-button>

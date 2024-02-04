@@ -6,7 +6,7 @@
                     <span class="u-desc" v-html="toLogText(item.content)"></span>
                     <span class="u-title">{{ ToDate(item.time) }}</span>
                 </div>
-                <span class="u-desc" v-if="sandboxData?.length < 1">暂无记录</span>
+                <span class="u-desc" v-if="sandboxData?.length < 1">{{ $t("暂无记录") }}</span>
             </div>
         </div>
     </div>

@@ -3,11 +3,11 @@
         <div class="m-ladder-header">
             <h3 class="m-ladder-title">
                 <span class="u-title">
-                    <img class="u-icon" svg-inline src="@/assets/img/side/rank.svg" /> 竞技场热门榜
+                    <img class="u-icon" svg-inline src="@/assets/img/side/rank.svg" /> {{ $t("竞技场热门榜") }}
                 </span>
                 <!-- <el-icon v-if="isEditor" class="u-edit-icon" @click="onSettingIconClick"><Setting /></el-icon> -->
             </h3>
-            <el-select class="m-ladder-select" v-model="active" placeholder="请选择" size="small">
+            <el-select class="m-ladder-select" v-model="active" :placeholder="$t('请选择')" size="small">
                 <el-option
                     v-for="item in filterRankList"
                     :key="item.id"
@@ -19,7 +19,7 @@
 
         <div class="m-ladder-rank">
             <el-tabs v-model="activeTab">
-                <el-tab-pane label="输出" name="dps">
+                <el-tab-pane :label="$t('输出')" name="dps">
                     <ul v-if="content?.dps.length" class="m-ladder-rank__content">
                         <li v-for="(item, index) in content.dps" :key="item.name" class="u-link">
                             <span class="u-order" :class="highlight(index)">{{ index + 1 }}</span>
@@ -29,7 +29,7 @@
                         </li>
                     </ul>
                 </el-tab-pane>
-                <el-tab-pane label="治疗" name="hps">
+                <el-tab-pane :label="$t('治疗')" name="hps">
                     <ul v-if="content?.hps.length" class="m-ladder-rank__content">
                         <li v-for="(item, index) in content.hps" :key="item.name" class="u-link">
                             <span class="u-order" :class="highlight(index)">{{ index + 1 }}</span>
@@ -44,20 +44,20 @@
 
         <el-drawer
             v-model="showDialog"
-            title="竞技场热门榜设置"
+            :title="$t('竞技场热门榜设置')"
             class="m-rank-pop"
             append-to-body
             width="600px"
             @close="onCancel"
         >
             <el-form :model="form" ref="form" label-position="top">
-                <el-form-item label="榜单名称">
+                <el-form-item :label="$t('榜单名称')">
                     <div class="m-rank-name">
                         <el-select
                             v-model="activeName"
                             filterable
                             allow-create
-                            placeholder="请选择现有榜单或输入新的榜单"
+                            :placeholder="$t('请选择现有榜单或输入新的榜单')"
                             style=""
                             @change="onLabelChange"
                             default-first-option
@@ -71,10 +71,13 @@
                         </el-select>
                         <el-icon @click="onEdit" v-if="activeName && !isNaN(activeName)"><Setting></Setting></el-icon>
                     </div>
-                    <div v-if="tmpName" class="u-tmp-name"><em>修改后：</em>{{ tmpName }}</div>
+                    <div v-if="tmpName" class="u-tmp-name">
+                        <em>{{ $t("修改后：") }}</em
+                        >{{ tmpName }}
+                    </div>
                 </el-form-item>
-                <el-form-item label="客户端">
-                    <el-select v-model="form.client" placeholder="请选择客户端" style="width: 100%">
+                <el-form-item :label="$t('客户端')">
+                    <el-select v-model="form.client" :placeholder="$t('请选择客户端')" style="width: 100%">
                         <el-option
                             v-for="item in clients"
                             :key="item.value"
@@ -83,23 +86,23 @@
                         ></el-option>
                     </el-select>
                 </el-form-item>
-                <el-form-item label="状态" class="m-status">
+                <el-form-item :label="$t('状态')" class="m-status">
                     <template #label>
-                        <span class="u-status">状态</span>
-                        <el-tooltip content="控制榜单是否显示">
+                        <span class="u-status">{{ $t("状态") }}</span>
+                        <el-tooltip :content="$t('控制榜单是否显示')">
                             <el-icon><QuestionFilled /></el-icon>
                         </el-tooltip>
                     </template>
                     <el-switch v-model="form.status" :inactive-value="0" :active-value="1"></el-switch>
                 </el-form-item>
-                <el-form-item label="内容" class="m-content">
+                <el-form-item :label="$t('内容')" class="m-content">
                     <draggable v-model="form.content" item-key="index" animation="300" handle=".u-rank-icon">
                         <template #item="{ element, index }">
                             <div class="m-content-item">
                                 <el-icon class="u-rank-icon"><Rank /></el-icon>
                                 <!-- <el-select
                                     v-model="element.id"
-                                    placeholder="请选择门派名称"
+                                    :placeholder="$t('请选择门派名称')"
                                     popper-class="u-school-select"
                                     style="width: 300px"
                                     filterable
@@ -116,7 +119,7 @@
                                 </el-select> -->
                                 <el-select
                                     v-model="element.id"
-                                    placeholder="请选择心法名称"
+                                    :placeholder="$t('请选择心法名称')"
                                     popper-class="u-school-select"
                                     style="width: 300px"
                                     filterable
@@ -126,7 +129,7 @@
                                         <span>{{ item.name }}</span>
                                     </el-option>
                                 </el-select>
-                                <el-input v-model="element.num" placeholder="请输入心法人数"></el-input>
+                                <el-input v-model="element.num" :placeholder="$t('请输入心法人数')"></el-input>
                                 <div class="u-action">
                                     <el-button
                                         size="small"
@@ -149,18 +152,18 @@
                         </template>
                     </draggable>
                 </el-form-item>
-                <el-form-item label="快速输入">
+                <el-form-item :label="$t('快速输入')">
                     <el-input v-model="quickInput" :rows="8" type="textarea" @change="onQuickInputChange"></el-input>
                 </el-form-item>
             </el-form>
 
             <template #footer>
                 <div>
-                    <el-button type="danger" class="u-del-btn" @click="onDelete" :disabled="saveLoading"
-                        >删除</el-button
-                    >
-                    <el-button @click="onCancel" :disabled="saveLoading">取消</el-button>
-                    <el-button type="primary" @click="onSave" :disabled="saveLoading">保存</el-button>
+                    <el-button type="danger" class="u-del-btn" @click="onDelete" :disabled="saveLoading">{{
+                        $t("删除")
+                    }}</el-button>
+                    <el-button @click="onCancel" :disabled="saveLoading">{{ $t("取消") }}</el-button>
+                    <el-button type="primary" @click="onSave" :disabled="saveLoading">{{ $t("保存") }}</el-button>
                 </div>
             </template>
         </el-drawer>

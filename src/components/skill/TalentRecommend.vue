@@ -2,7 +2,7 @@
     <div class="m-talent-recommend">
         <div class="m-talent-recommend__header">
             <div class="u-talent-title">
-                奇穴推荐
+                {{ $t("奇穴推荐") }}
                 <el-select size="small" v-model="active" style="width: 150px" v-show="list?.length">
                     <el-option v-for="item in list" :key="item.id" :label="item.title" :value="item.id"></el-option>
                 </el-select>
@@ -40,7 +40,14 @@
             </div>
             <div class="m-talent-desc" v-html="nl2br(activeData?.desc)"></div>
         </div>
-        <el-alert show-icon type="warning" title="暂无奇穴推荐" class="u-alert" v-else :closable="false"></el-alert>
+        <el-alert
+            show-icon
+            type="warning"
+            :title="$t('暂无奇穴推荐')"
+            class="u-alert"
+            v-else
+            :closable="false"
+        ></el-alert>
     </div>
 </template>
 

@@ -2,7 +2,7 @@
     <div class="m-special-skill">
         <div class="m-special-skill__header" @click="isCollapse = !isCollapse">
             <div class="u-special-title">
-                <el-icon><Filter /></el-icon>技能分类
+                <el-icon><Filter /></el-icon>{{ $t("技能分类") }}
 
                 <el-icon class="u-collapse-icon" :title="!isCollapse ? '展开' : '折叠'"
                     ><ArrowUp v-if="isCollapse" /><ArrowDown v-else

@@ -3,14 +3,14 @@
         <div class="p-pvp-single">
             <PostHeader :post="post" :stat="stat">
                 <div class="u-meta u-sub-block">
-                    <em class="u-label">心法</em>
+                    <em class="u-label">{{ $t("心法") }}</em>
                     <span class="u-value">
                         <img class="u-icon-xf" :src="xficon(xficon_id)" :alt="xf" />
                         {{ xf }}
                     </span>
                 </div>
                 <div class="u-meta u-sub-block">
-                    <em class="u-label">资料片</em>
+                    <em class="u-label">{{ $t("资料片") }}</em>
                     <span class="u-value">{{ zlp }}</span>
                 </div>
             </PostHeader>
@@ -27,18 +27,19 @@
                                 <div class="m-talent" v-if="Object.keys(talent).length">
                                     <div class="m-talent__title">
                                         <img class="u-icon" :src="getAppIcon('talent')" alt="" />
-                                        奇穴
+                                        {{ $t("奇穴") }}
                                     </div>
                                     <div class="m-talent-box" :class="`m-qx-container-${data?.ID}`"></div>
 
                                     <div class="u-desc" v-if="data?.post_meta?.talent_desc">
-                                        奇穴讲解：<span v-html="nl2br(data?.post_meta?.talent_desc)"></span>
+                                        {{ $t("奇穴讲解：") }}<span v-html="nl2br(data?.post_meta?.talent_desc)"></span>
                                     </div>
                                 </div>
                                 <div class="m-skills">
                                     <div class="m-skill-item" v-for="(item, i) in skills" :key="i">
                                         <div class="u-title">
-                                            <img class="u-icon" :src="getAppIcon('pvp')" alt="" /> 连招：{{ item.name }}
+                                            <img class="u-icon" :src="getAppIcon('pvp')" alt="" />
+                                            {{ $t("连招：") + item.name }}
                                         </div>
                                         <div class="u-skills" v-if="item.sq">
                                             <span
@@ -53,12 +54,16 @@
                                                     :title="skill.Name"
                                                 />
                                                 <span class="u-skill-name">{{ skill.Name }}</span>
-                                                <i class="u-gcd-icon" v-show="skill.WithoutGcd" title="无GCD技能">
+                                                <i
+                                                    class="u-gcd-icon"
+                                                    v-show="skill.WithoutGcd"
+                                                    :title="$t('无GCD技能')"
+                                                >
                                                     <el-icon><Clock /></el-icon>
                                                 </i>
                                             </span>
                                         </div>
-                                        <div class="u-desc" v-if="item.desc">连招说明：{{ item.desc }}</div>
+                                        <div class="u-desc" v-if="item.desc">{{ $t("连招说明：") + item.desc }}</div>
                                     </div>
                                 </div>
                             </div>
@@ -66,7 +71,7 @@
                     </div>
                 </div>
 
-                <el-divider content-position="left">正文</el-divider>
+                <el-divider content-position="left">{{ $t("正文") }}</el-divider>
                 <Article :content="post_content" @directoryRendered="updateDirectory" />
             </div>
             <div class="m-single-null" v-else>
@@ -93,9 +98,9 @@
 
                 <!-- 评论 -->
                 <div ref="commentView" class="m-single-comment">
-                    <el-divider content-position="left">评论</el-divider>
+                    <el-divider content-position="left">{{ $t("评论") }}</el-divider>
                     <Comment :id="id" category="post" v-if="id && allow_comment" />
-                    <el-alert title="作者没有开启评论功能" type="warning" show-icon v-else></el-alert>
+                    <el-alert :title="$t('作者没有开启评论功能')" type="warning" show-icon v-else></el-alert>
                 </div>
             </div>
         </div>

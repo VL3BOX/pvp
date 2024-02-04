@@ -1,7 +1,7 @@
 <template>
     <div class="m-notice-top">
         <div class="m-notice-top__header">
-            <h3 class="u-title"><i class="el-icon-news"></i>公告</h3>
+            <h3 class="u-title"><i class="el-icon-news"></i>{{ $t("公告") }}</h3>
         </div>
         <div class="m-notice-top__content">
             <div class="m-notice-top__item" v-for="item in data" :key="item.id">

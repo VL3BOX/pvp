@@ -77,12 +77,12 @@
             <div class="m-martial-extend" v-if="subtype && subtype !== '通用'">
                 <div class="m-mount-info">
                     <div class="m-pasv">
-                        <!-- <div class="u-title">门派内功</div> -->
+                        <!-- <div class="u-title">{{ $t('门派内功') }}</div> -->
                         <el-popover width="450px" popper-class="m-pasv-pop" effect="dark" :show-arrow="false">
                             <div class="m-pasv">
                                 <div class="u-title">{{ subtype }}</div>
                                 <div class="u-name">{{ pasv_info?.Name }}</div>
-                                <div class="u-subtitle">被动招式</div>
+                                <div class="u-subtitle">{{ $t("被动招式") }}</div>
                                 <div class="u-desc" v-html="formatPasv(pasv_info)"></div>
                             </div>
                             <template #reference>
@@ -100,7 +100,7 @@
                         </el-popover>
                     </div>
                     <div class="m-zhenfa">
-                        <!-- <div class="u-title">阵法</div> -->
+                        <!-- <div class="u-title">{{ $t('阵法') }}</div> -->
                         <el-popover width="500px" popper-class="m-pasv-pop" effect="dark" :show-arrow="false">
                             <div class="m-zhenfa-info">
                                 <div class="u-zhenfa-bg" :style="zhenfaBg">

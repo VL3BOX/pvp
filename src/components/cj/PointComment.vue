@@ -20,12 +20,12 @@
             </div>
         </div>
 
-        <el-divider content-position="left">评论</el-divider>
+        <el-divider content-position="left">{{ $t("评论") }}</el-divider>
 
         <Comment :id="id" category="desert"></Comment>
         <template #footer>
             <span class="dialog-footer">
-                <el-button @click="dialogVisible = false">取 消</el-button>
+                <el-button @click="dialogVisible = false">{{ $t("取 消") }}</el-button>
             </span>
         </template>
     </el-dialog>

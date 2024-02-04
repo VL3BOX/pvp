@@ -1,9 +1,11 @@
 <template>
     <div class="c-macro__header">
         <div class="m-archive-search">
-            <a :href="publish_link" class="u-publish el-button el-button--primary el-button--large">+ 发布作品</a>
+            <a :href="publish_link" class="u-publish el-button el-button--primary el-button--large"
+                >+ {{ $t("发布作品") }}</a
+            >
             <el-input
-                placeholder="请输入搜索内容"
+                :placeholder="$t('请输入搜索内容')"
                 v-model.trim.lazy="search"
                 clearable
                 @clear="onSearch"
@@ -12,7 +14,7 @@
             >
                 <template v-slot:prepend>
                     <span class="u-search">
-                        <el-icon> <Search /></el-icon> <span class="u-search">关键词</span></span
+                        <el-icon> <Search /></el-icon> <span class="u-search">{{ $t("关键词") }}</span></span
                     >
                 </template>
                 <template v-slot:append>
