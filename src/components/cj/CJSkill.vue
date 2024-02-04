@@ -1,7 +1,7 @@
 <template>
     <div class="m-cj-skill">
         <div class="m-search">
-            <el-input class="u-input" v-model="search" placeholder="请输入 技能名称 查询" clearable></el-input>
+            <el-input class="u-input" v-model="search" :placeholder="$t('请输入 技能名称 查询')" clearable></el-input>
             <el-select class="u-select" v-model="quality">
                 <el-option v-for="item in qualities" :key="item.value" :value="item.value" :label="item.label">
                     <div class="u-skill-select-label" :class="`is-quality-bg-${item.value}`">
@@ -15,13 +15,13 @@
         </div>
         <div v-if="list.length" class="m-skill-list">
             <div class="u-skill-item">
-                <div class="u-td">技能名称</div>
-                <!-- <div class="u-td">品质</div> -->
-                <div class="u-td">效果</div>
+                <div class="u-td">{{ $t("技能名称") }}</div>
+                <!-- <div class="u-td">{{ $t('品质') }}</div> -->
+                <div class="u-td">{{ $t("效果") }}</div>
             </div>
             <SkillItem :source="item" v-for="(item, index) in list" :key="item.dwSkillID + index"></SkillItem>
         </div>
-        <div v-else class="u-no-data">暂无技能</div>
+        <div v-else class="u-no-data">{{ $t("暂无技能") }}</div>
     </div>
 </template>
 

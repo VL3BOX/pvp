@@ -21,17 +21,17 @@
                             </el-tag>
                         </div>
                         <div class="u-op">
-                            <el-button type="primary" text @click="toEdit(pointItem)">编辑</el-button>
-                            <el-button type="danger" text @click="toDel(pointItem.id)">删除</el-button>
+                            <el-button type="primary" text @click="toEdit(pointItem)">{{ $t("编辑") }}</el-button>
+                            <el-button type="danger" text @click="toDel(pointItem.id)">{{ $t("删除") }}</el-button>
                         </div>
                     </div>
                     <div class="u-content">{{ pointItem.desc }}</div>
                     <div class="u-time">UpdatedAt: {{ formatTime(pointItem.updated_at) }}</div>
                 </div>
             </template>
-            <span v-else class="u-no-data">该分类下并无数据。</span>
+            <span v-else class="u-no-data">{{ $t("该分类下并无数据。") }}</span>
         </template>
-        <span v-else class="u-no-data">请打开编辑模式后，右键添加您的标点。</span>
+        <span v-else class="u-no-data">{{ $t("请打开编辑模式后，右键添加您的标点。") }}</span>
     </div>
 </template>
 

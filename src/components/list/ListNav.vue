@@ -1,9 +1,9 @@
 <template>
     <div class="m-list-nav">
         <h5 class="u-title">
-            心法导航
+            {{ $t("心法导航") }}
             <router-link class="u-more" :to="{ query: { subtype: '' } }"
-                >全部心法<el-icon><ArrowRight /></el-icon
+                >{{ $t("全部心法") }}<el-icon><ArrowRight /></el-icon
             ></router-link>
         </h5>
         <ul class="m-bps-nav u-list">
@@ -21,7 +21,7 @@
             </li>
         </ul>
 
-        <h5 class="u-title">在线应用</h5>
+        <h5 class="u-title">{{ $t("在线应用") }}</h5>
         <div class="m-nav-group">
             <!-- <a href="/pz" target="_blank">
                 <img class="u-icon" :src="getAppIcon('pz', true)" />
@@ -40,7 +40,7 @@
             </a> -->
             <a href="/collection/451" target="_blank">
                 <img class="u-icon" :src="getAppIcon('jx3dat')" />
-                <span>PVP监控下载</span>
+                <span>{{ $t("PVP监控下载") }}</span>
                 <em>PvP Jx3dat</em>
             </a>
         </div>

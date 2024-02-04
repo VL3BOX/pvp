@@ -3,7 +3,7 @@
         <el-tab-pane label="武学研习" name="index">
             <template #label>
                 <el-icon><Collection /></el-icon>
-                <b>武学研习</b>
+                <b>{{ $t("武学研习") }}</b>
             </template>
         </el-tab-pane>
         <el-tab-pane label="连招技巧" name="post">

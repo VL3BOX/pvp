@@ -21,6 +21,10 @@ import "@jx3box/jx3box-common/css/element-plus-override.scss";
 import ElementPlus from "element-plus";
 import zhCn from "element-plus/es/locale/lang/zh-cn";
 
+// vue3-i18n
+import i18n from "@jx3box/jx3box-vue3-ui/i18n";
+app.use(i18n);
+
 app.use(ElementPlus, {
     locale: zhCn,
 });

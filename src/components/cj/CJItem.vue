@@ -4,7 +4,7 @@
             <ItemSimple :item="item" effect="dark" iconSize="32px" />
         </div>
     </div>
-    <div v-else class="u-no-data">暂无道具。</div>
+    <div v-else class="u-no-data">{{ $t("暂无道具。") }}</div>
 </template>
 
 <script>

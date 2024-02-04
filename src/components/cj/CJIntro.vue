@@ -1,7 +1,7 @@
 <template>
     <div class="m-cj-intro">
         <div class="u-title">
-            <el-icon class="u-tab-icon"><Compass></Compass></el-icon><b>背景特色</b>
+            <el-icon class="u-tab-icon"><Compass></Compass></el-icon><b>{{ $t("背景特色") }}</b>
         </div>
         <div class="u-info" v-html="getData()"></div>
     </div>

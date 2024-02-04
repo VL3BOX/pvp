@@ -3,7 +3,7 @@
         <div class="m-map-op">
             <div class="m-select">
                 <el-select style="width: 150px" v-model="map" @change="mapChange">
-                    <template #prefix>地图</template>
+                    <template #prefix>{{ $t("地图") }}</template>
                     <el-option
                         v-for="item in mapPath"
                         :key="item.mapId"
@@ -19,7 +19,7 @@
                     :class="selectedLegends.length === legends.length && 'is-active'"
                     @click="handleClickAll"
                 >
-                    <label class="u-label">全部</label>
+                    <label class="u-label">{{ $t("全部") }}</label>
                 </div>
                 <div
                     class="u-legend"
@@ -46,7 +46,7 @@
                     v-model="isEditMode"
                     :disabled="!isLogin"
                     border
-                    label="编辑模式"
+                    :label="$t('编辑模式')"
                 ></el-checkbox>
             </div>
         </div>
@@ -75,42 +75,42 @@
                     <ul v-if="contextMenuVisible">
                         <li @click="menuItemClicked('add')">
                             <el-icon size="16"><CirclePlus /></el-icon>
-                            <span>新增</span>
+                            <span>{{ $t("新增") }}</span>
                             <!-- <img v-if="getLegendSrc()" :src="getLegendSrc()" class="u-legend" /> -->
                         </li>
                     </ul>
                     <ul v-if="pointMenuVisible">
                         <li v-if="currentRightClickPoint.id && currentRightClickPoint.belongToMe" @click="toEdit(null)">
                             <el-icon size="16"><Edit /></el-icon>
-                            <span>编辑</span>
+                            <span>{{ $t("编辑") }}</span>
                         </li>
                         <li
                             v-if="currentRightClickPoint.id && currentRightClickPoint.status === 1"
                             @click="toOpenComment(null)"
                         >
                             <el-icon size="16"><ChatDotRound /></el-icon>
-                            <span>评论</span>
+                            <span>{{ $t("评论") }}</span>
                         </li>
                         <li
                             v-if="isEditor && currentRightClickPoint.id && currentRightClickPoint.status !== 1"
                             @click="toReview(1)"
                         >
                             <el-icon size="16"><CircleCheck /></el-icon>
-                            <span class="u-success">通过</span>
+                            <span class="u-success">{{ $t("通过") }}</span>
                         </li>
                         <li
                             v-if="isEditor && currentRightClickPoint.id && currentRightClickPoint.status === 0"
                             @click="toReview(2)"
                         >
                             <el-icon size="16"><CircleClose /></el-icon>
-                            <span class="u-danger">拒绝</span>
+                            <span class="u-danger">{{ $t("拒绝") }}</span>
                         </li>
                         <li
                             v-if="currentRightClickPoint.id && currentRightClickPoint.belongToMe"
                             @click="toDel(currentRightClickPoint.id)"
                         >
                             <el-icon size="16"><Delete /></el-icon>
-                            <span class="u-danger">删除</span>
+                            <span class="u-danger">{{ $t("删除") }}</span>
                         </li>
                         <!-- 已通过的标点重新打回 -->
                         <li
@@ -118,7 +118,7 @@
                             @click="toReview(0)"
                         >
                             <el-icon size="16"><Remove /></el-icon>
-                            <span class="u-danger">弃用</span>
+                            <span class="u-danger">{{ $t("弃用") }}</span>
                         </li>
                     </ul>
                 </div>
@@ -195,15 +195,19 @@
                                 {{ point.desc }}
                             </div>
                             <div v-if="point.belongToMe" class="u-footer">
-                                <el-button size="small" type="primary" @click="toEdit(point)">编辑</el-button>
-                                <el-button size="small" type="danger" @click="toDel(point.id)">删除</el-button>
+                                <el-button size="small" type="primary" @click="toEdit(point)">{{
+                                    $t("编辑")
+                                }}</el-button>
+                                <el-button size="small" type="danger" @click="toDel(point.id)">{{
+                                    $t("删除")
+                                }}</el-button>
                                 <el-button
                                     v-if="point.status === 1"
                                     size="small"
                                     plain
                                     icon="ChatDotRound"
                                     @click="toOpenComment(point)"
-                                    >评论</el-button
+                                    >{{ $t("评论") }}</el-button
                                 >
                             </div>
                             <div v-else class="u-footer u-footer-info">
@@ -270,7 +274,7 @@
                     label-position="right"
                     label-width="60"
                 >
-                    <el-form-item label="类型" prop="type">
+                    <el-form-item :label="$t('类型')" prop="type">
                         <el-select v-model="pointForm.type" style="width: 100%" @change="legendChange">
                             <el-option
                                 v-for="legend in legends"
@@ -280,14 +284,14 @@
                             ></el-option>
                         </el-select>
                     </el-form-item>
-                    <el-form-item label="短评" prop="desc">
+                    <el-form-item :label="$t('短评')" prop="desc">
                         <el-input type="textarea" v-model="pointForm.desc" :rows="4" maxlength="50" show-word-limit />
                     </el-form-item>
                 </el-form>
                 <template #footer>
                     <div class="m-footer">
-                        <el-button @click="onCancel">取消</el-button>
-                        <el-button type="primary" :loading="btnLoading" @click="onConfirm">保存</el-button>
+                        <el-button @click="onCancel">{{ $t("取消") }}</el-button>
+                        <el-button type="primary" :loading="btnLoading" @click="onConfirm">{{ $t("保存") }}</el-button>
                     </div>
                 </template>
             </el-dialog>
