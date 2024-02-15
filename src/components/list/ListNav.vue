@@ -16,7 +16,7 @@
                     <i class="u-pic">
                         <img :src="showMountIcon(item.id)" :alt="item.name" />
                     </i>
-                    <span class="u-txt">{{ item.name }}</span>
+                    <span class="u-txt">{{ item.displayName }}</span>
                 </router-link>
             </li>
         </ul>
@@ -65,10 +65,8 @@ export default {
             delete xfmap["山居剑意"];
             if (this.$i18n.locale === "vi") {
                 for (let mount in xfmap) {
-                    xfmap[mount].name = xfmap[mount].viName || xfmap[mount].name;
-                    console.log(xfmap[mount].name, xfmap[mount].viName);
+                    xfmap[mount].displayName = xfmap[mount].viName || xfmap[mount].name;
                 }
-                console.log(xfmap);
             }
 
             return xfmap;
