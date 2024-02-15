@@ -63,6 +63,14 @@ export default {
         },
         xfmaps() {
             delete xfmap["山居剑意"];
+            if (this.$i18n.locale === "vi") {
+                for (let mount in xfmap) {
+                    xfmap[mount].name = xfmap[mount].viName || xfmap[mount].name;
+                    console.log(xfmap[mount].name, xfmap[mount].viName);
+                }
+                console.log(xfmap);
+            }
+
             return xfmap;
         },
     },
