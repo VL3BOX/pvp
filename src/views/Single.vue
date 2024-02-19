@@ -250,7 +250,6 @@ export default {
         },
         installTalent() {
             this.talentDriver = new JX3_QIXUE({
-                $i18n: this.$i18n,
                 container: `.m-qx-container-${this.data?.ID}`,
                 version: this.talent.version,
                 xf: this.talent.xf,

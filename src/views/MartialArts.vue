@@ -526,7 +526,7 @@ export default {
         installTalent: async function () {
             await getBreadcrumb("pvp_talent_version").then((res) => {
                 this.version = res.data?.data?.html;
-                this.talentDriver = new JX3_QIXUE({ version: this.version, $i18n: this.$i18n });
+                this.talentDriver = new JX3_QIXUE({ version: this.version });
                 this.reloadTalent();
             });
             // await getTalentVersions().then((res) => {
@@ -540,6 +540,7 @@ export default {
                 this.talentDriver?.then((talent) => {
                     $store.qixueData = talent?._data;
                     talent.load({
+                        $i18n: this.$i18n,
                         // version: this.version,
                         xf: this.subtype,
                         editable: true,
