@@ -540,7 +540,6 @@ export default {
                 this.talentDriver?.then((talent) => {
                     $store.qixueData = talent?._data;
                     talent.load({
-                        $i18n: this.$i18n,
                         // version: this.version,
                         xf: this.subtype,
                         editable: true,
