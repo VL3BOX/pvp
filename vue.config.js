@@ -1,23 +1,23 @@
 const path = require("path");
-const setting = require("./setting.json");
+const setting = require("./setting.vi.json");
 const pkg = require("./package.json");
 const { JX3BOX } = require("@jx3box/jx3box-common");
 module.exports = {
     //❤️ Multiple pages ~
-    // pages: {
-    //     index: {
-    //         title: "Home",
-    //         entry: "src/main.js",
-    //         template: "public/index.html",
-    //         filename: "index.html",
-    //     },
+    pages: {
+        index: {
+            title: setting.title + setting.suffix,
+            entry: "src/main.js",
+            template: "public/index.vi.html",
+            filename: "index.html",
+        },
     //     $project: {
     //         title: "Project",
     //         entry: "src/core/$project/index.js",
     //         template: "public/$project/index.html",
     //         filename: "$project/index.html",
     //     },
-    // },
+    },
 
     //⚛️ Proxy ~
     devServer: {

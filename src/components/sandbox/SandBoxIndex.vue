@@ -15,6 +15,8 @@ import sandboxMaps from "@/components/sandbox/SandboxMaps.vue";
 import sandboxLog from "@/components/sandbox/SandboxLog.vue";
 import servers_std from "@jx3box/jx3box-data/data/server/server_std.json";
 import { getCamplist, getCampLog } from "@/service/sandbox";
+import { useI18n } from "vue-i18n";
+
 export default {
     name: "SandBox",
     components: {
@@ -25,10 +27,10 @@ export default {
     data: function () {
         return {
             sandMaps: {},
-            servers: servers_std.map((name) => this.$i18n.t(name)),
+            servers: servers_std.map((name) => this.t(name)),
             itemLog: "",
             showLog: false,
-            server: this.$i18n.t(servers_std[0]) || "",
+            server: this.t(servers_std[0]) || "",
         };
     },
     computed: {
@@ -77,6 +79,12 @@ export default {
 
     created: function () {
         this.getSandbox();
+    },
+    setup() {
+        const { t } = useI18n();
+        return {
+            t,
+        };
     },
 };
 </script>
