@@ -25,10 +25,10 @@ export default {
     data: function () {
         return {
             sandMaps: {},
-            servers: servers_std,
+            servers: servers_std.map((name) => this.$i18n.t(name)),
             itemLog: "",
             showLog: false,
-            server: servers_std[0] || "",
+            server: this.$i18n.t(servers_std[0]) || "",
         };
     },
     computed: {
