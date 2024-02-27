@@ -4,20 +4,20 @@ const pkg = require("./package.json");
 const { JX3BOX } = require("@jx3box/jx3box-common");
 module.exports = {
     //❤️ Multiple pages ~
-    pages: {
-        index: {
-            title: setting.title + setting.suffix,
-            entry: "src/main.js",
-            template: "public/index.vi.html",
-            filename: "index.html",
-        },
+    // pages: {
+    //     index: {
+    //         title: setting.title + setting.suffix,
+    //         entry: "src/main.js",
+    //         template: "public/index.vi.html",
+    //         filename: "index.html",
+    //     },
     //     $project: {
     //         title: "Project",
     //         entry: "src/core/$project/index.js",
     //         template: "public/$project/index.html",
     //         filename: "$project/index.html",
     //     },
-    },
+    // },
 
     //⚛️ Proxy ~
     devServer: {
@@ -103,15 +103,15 @@ module.exports = {
     chainWebpack: (config) => {
         //💘 html-webpack-plugin ~
         // Multiple pages disable the block below
-        // config.plugin("html").use("html").tap((args) => {
-        //     args[0].meta = {
-        //         //------设置SEO信息
-        //         Keywords: setting.keys,
-        //         Description: setting.desc,
-        //     };
-        //     args[0].title = setting.title + setting.suffix; //------自动添加标题后缀
-        //     return args;
-        // });
+        config.plugin("html").tap((args) => {
+            args[0].meta = {
+                //------设置SEO信息
+                Keywords: setting.keys,
+                Description: setting.desc,
+            };
+            args[0].title = setting.title + setting.suffix; //------自动添加标题后缀
+            return args;
+        });
 
         //💝 in-line small imgs ~
         config.module.rule("images").set("parser", {
