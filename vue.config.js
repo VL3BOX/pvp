@@ -22,6 +22,12 @@ module.exports = {
     //⚛️ Proxy ~
     devServer: {
         proxy: {
+            "/locales": {
+                target: "https://cms.vl3box.com",
+                onProxyReq: function (request) {
+                    request.setHeader("origin", "");
+                },
+            },
             "/api/vip": {
                 target: "https://pay.jx3box.com",
                 onProxyReq: function (request) {
